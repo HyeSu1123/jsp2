@@ -106,46 +106,49 @@
     const sel = document.querySelectorAll("#column>option"); // > 자식요소
 		//    console.log(sel);
 		//    let status = 1;
-    sel.forEach(function(item)=>{
+    sel.forEach(function(item){
     	if(item.value == '${column}'){
     		item.selected='selected';
     			//column 애트리뷰트값과 일치하는 option항목일때이다.
     	}
     	
     });
-    doucment.querySelectoryAll("#grades>option").forEach(function(item){
-    	if(item.value == '${find}'){
-    		item.selectd='selected';
-    			//grade를 선택한 것에 따라 일치하는 option을 표시한다.
-    	}
-    });
-    //화면표시 변경
-    const grade = document.getElementById('grade');	//select
-    	//grade.style.display = 'none';	//안보이게 하는 방법
-    const content = document.getElementById('content');	//input
-    if('${column}'=='grade'){
-    	grade.style.display = 'inline-block';
-    	content.style.display = 'none';
-    }else{
-    	content.style.display = 'inline-block';
-		grade.style.display = 'none';
-    }
-    //검색 컬럼 선택 sel이 변경될때
-    document.getElementById('column').addEventListener("change",changeView);
-    function changeView(){
-    	//form요소 가져오기 -select
-    	const col = document.forms[0].column.value;
-    	if(col == 'grade'){
-    		grade.style.display = 'inline-block';
-    		content.style.display = 'none';
-    	}else{
-    		content.style.display = 'inline-block';
-    		grade.style.display = 'none';
-    		//form요소 가져오기 -input요소 find
-    		document.forms[0].elements[1].value="";
-    	}
-    }
-    
-    </script>
+    document.querySelectorAll("#grades>option").forEach(function(item){
+		if(item.value=='${find}'){
+			item.selected='selected';
+				//grade를 선택한 것에 따라 일치하는 option을 표시합니다. 
+		}
+	});
+	/* 화면표시 변경 */
+	const grade = document.getElementById('grade');			//select
+	const content = document.getElementById('content');		//input
+	if('${column}'=='grade') {
+		grade.style.display ='inline-block';
+		content.style.display ='none';
+	}else {
+		content.style.display ='inline-block';
+		grade.style.display ='none';
+	}
+	//	grade.style.display ='none';		//안보이게 하는 방법
+	// 검색 컬럼선택 sel 이 변경될떄
+	document.getElementById('column').addEventListener("change",changeView);
+	function changeView(){
+		//form요소 가져오기 - select 
+		const col = document.forms[0].column.value;
+		if(col=='grade'){
+			grade.style.display ='inline-block';
+			content.style.display ='none';
+			
+		}else {
+			content.style.display ='inline-block';
+			grade.style.display ='none';
+			//form요소 가져오기 - input 요소 find
+			document.forms[0].elements[1].value="";
+		}
+	}
+
+</script>
+
+
 </body>
 </html>
